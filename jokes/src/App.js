@@ -4,6 +4,7 @@ import './App.css';
 import { Route, NavLink } from 'react-router-dom';
 
 import Login from './components/Login.js';
+import SignUp from './components/SignUp';
 
 
 class App extends Component {
@@ -12,9 +13,12 @@ class App extends Component {
       <div className="App">
         <header>
           <NavLink to="/login">Login</NavLink>
+          &nbsp;|&nbsp;
+          <NavLink to="/register">Sign Up</NavLink>
         </header>
         <body>
           <Route path="/login" render={(props) => <Login {...props} /> } />
+          <Route path="/register" render={(props) => <SignUp {...props} /> } />
         </body>
       
       </div>
