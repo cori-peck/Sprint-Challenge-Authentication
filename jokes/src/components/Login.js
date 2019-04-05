@@ -1,9 +1,30 @@
 import React from 'react';
+import axios from 'axios';
 
 class Login extends React.Component {
     state = {
         username: '',
         password: '',
+    }
+
+    handleInputChange = e => {
+        const {name , value } = e.target;
+
+        this.setState({ [name]: value });
+    }
+
+    handleSubmit = e => {
+        e.preventDefault();
+
+        const endpoint = 'http://localhost:3300/api/login';
+
+        axios
+        .post(endpoint, this.state)
+        .then(res => {
+            localStorage.setItem('token', res.data.token);
+            this.props.history.push('/jokes');
+        })
+        .catch(err => console.error(err));
     }
 
     render() {
